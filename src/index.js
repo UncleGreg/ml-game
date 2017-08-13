@@ -1,6 +1,5 @@
 import css from './index.styl';
 
-const numbers = Array.from({length: 10}, (v, k) => k+1); 
 
 
 //{{{
@@ -40,14 +39,20 @@ function Stopwatch(elem){
       milliseconds = '0' + milliseconds;      
     }
 
-    return minutes + ' : ' + seconds + ' . ' + milliseconds;
+    if(time.getMinutes() == 2){
+      watch.stop()
+      timer.style.display ="none"
+      alert('czas sie skonczyl! Twój wynik to ' + (numberCount - 1))
+    }
 
+    return minutes + ' : ' + seconds + ' . ' + milliseconds;
+     
   }
 
   this.isOn = false;
   this.start = function(){
     if(!this.isOn){
-      interval = setInterval(update.bind(this), 10);
+      interval = setInterval(update.bind(this), 1);
       offset = Date.now();
       this.isOn = true;     
     }
@@ -84,6 +89,8 @@ resetBtn.addEventListener('click',function(){
 //  watch.stop();
 })
 
+const numbers = Array.from({length: 100}, (v, k) => k+1); 
+
 function shuffle(array) {
   var i = 0
     , j = 0
@@ -117,9 +124,9 @@ $(document).on('click', '.number', function ()
     if(value == numberCount){
       $(this).addClass('correct');
       numberCount++;
-      if(numberCount == 11){
+      if(numberCount == 101){
         watch.stop();
-        alert('koniec! Twój czas to: ' + timer.textContent )
+        alert('Wow! Udało Ci się! Twój czas to: ' + timer.textContent )
       }
     } 
   }
