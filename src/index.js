@@ -1,47 +1,9 @@
 import css from './index.styl';
 
-const numbers = Array.from({length: 100}, (v, k) => k+1); 
-
-function shuffle(array) {
-  var i = 0
-    , j = 0
-    , temp = null
-
-  for (i = array.length - 1; i > 0; i -= 1) {
-      j = Math.floor(Math.random() * (i + 1))
-      temp = array[i]
-      array[i] = array[j]
-      array[j] = temp
-    }
-};
-var numberCount = 1;
-
-function generateNumbers() {
-  this.style.display ="none"
-  shuffle(numbers);
-  for (var i = 0; i < 100; i++){
-    var x = document.createElement("button");
-    var t = document.createTextNode(numbers[i]);
-    x.appendChild(t);
-    x.setAttribute("class", "number");
-    x.setAttribute("id", "button-" + numbers[i]);
-    document.getElementById('buttons-wrap').appendChild(x);}
-};
-
-$(document).on('click', '.number', function ()
-  {
-    var value= $(this).text();
-    if(value == numberCount){
-      $(this).addClass('correct');
-      numberCount++;
-    }
-  }
-)
-
-document.getElementById('generate-numbers').addEventListener("click", generateNumbers)
+const numbers = Array.from({length: 10}, (v, k) => k+1); 
 
 
-
+//{{{
 function Stopwatch(elem){
   var time = 0;
   var interval;
@@ -102,7 +64,7 @@ function Stopwatch(elem){
     update();
   };
 }
-
+//}}}
 
 var timer = document.getElementById('timer');
 var toggleBtn = document.getElementById('generate-numbers')
@@ -119,8 +81,51 @@ toggleBtn.addEventListener('click',function(){
 });
 
 resetBtn.addEventListener('click',function(){
-  watch.stop();
+//  watch.stop();
 })
+
+function shuffle(array) {
+  var i = 0
+    , j = 0
+    , temp = null
+
+  for (i = array.length - 1; i > 0; i -= 1) {
+      j = Math.floor(Math.random() * (i + 1))
+      temp = array[i]
+      array[i] = array[j]
+      array[j] = temp
+    }
+};
+var numberCount = 1;
+
+
+function generateNumbers() {
+  this.style.display ="none"
+  shuffle(numbers);
+  for (var i = 0; i < 100; i++){
+    var x = document.createElement("button");
+    var t = document.createTextNode(numbers[i]);
+    x.appendChild(t);
+    x.setAttribute("class", "number");
+    x.setAttribute("id", "button-" + numbers[i]);
+    document.getElementById('buttons-wrap').appendChild(x);}
+};
+
+$(document).on('click', '.number', function ()
+  {
+    var value= $(this).text();
+    if(value == numberCount){
+      $(this).addClass('correct');
+      numberCount++;
+      if(numberCount == 11){
+        watch.stop();
+        alert('koniec! Twój czas to: ' + timer.textContent )
+      }
+    } 
+  }
+)
+
+document.getElementById('generate-numbers').addEventListener("click", generateNumbers)
 
 
 
