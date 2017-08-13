@@ -11,10 +11,16 @@ body
   width 100%
   min-height 100vh
   display flex
-  align-items center
-  justify-content center
-  flex-direction column
-
+  .page-table
+    flex 1
+    display flex
+    align-items center
+    justify-content center
+  .page-menu
+    display flex
+    flex-direction column
+    align-items center
+    justify-content center
 #buttons-wrap
   display flex
   align-items center
@@ -22,6 +28,7 @@ body
   flex-wrap wrap
   padding .5em
   width 600px
+  height 600px
   background blue
   button
     width calc(600px / 10)
