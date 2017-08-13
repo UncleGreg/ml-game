@@ -52,7 +52,7 @@ function Stopwatch(elem){
   this.isOn = false;
   this.start = function(){
     if(!this.isOn){
-      interval = setInterval(update.bind(this), 1);
+      interval = setInterval(update.bind(this), 100);
       offset = Date.now();
       this.isOn = true;     
     }
@@ -73,7 +73,7 @@ function Stopwatch(elem){
 
 var timer = document.getElementById('timer');
 var toggleBtn = document.getElementById('generate-numbers')
-var resetBtn = document.getElementById('reset')
+//var resetBtn = document.getElementById('reset')
 
 var watch = new Stopwatch(timer);
 
@@ -85,9 +85,9 @@ toggleBtn.addEventListener('click',function(){
   }
 });
 
-resetBtn.addEventListener('click',function(){
+//resetBtn.addEventListener('click',function(){
 //  watch.stop();
-})
+//})
 
 const numbers = Array.from({length: 100}, (v, k) => k+1); 
 
@@ -107,7 +107,7 @@ var numberCount = 1;
 
 
 function generateNumbers() {
-  this.style.display ="none"
+  document.getElementById('instructions').style.display ="none";
   shuffle(numbers);
   for (var i = 0; i < 100; i++){
     var x = document.createElement("button");
