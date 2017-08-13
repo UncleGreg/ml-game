@@ -14,15 +14,29 @@ function shuffle(array) {
       array[j] = temp
     }
 };
+var numberCount = 1;
 
 function generateNumbers() {
+  this.style.display ="none"
   shuffle(numbers);
   for (var i = 0; i < 100; i++){
     var x = document.createElement("button");
     var t = document.createTextNode(numbers[i]);
     x.appendChild(t);
+    x.setAttribute("class", "number");
     x.setAttribute("id", "button-" + numbers[i]);
     document.getElementById('buttons-wrap').appendChild(x);}
 };
 
+$(document).on('click', '.number', function ()
+  {
+    var value= $(this).text();
+    if(value == numberCount){
+      $(this).addClass('correct');
+      numberCount++;
+    }
+  }
+)
+
 document.getElementById('generate-numbers').addEventListener("click", generateNumbers)
+

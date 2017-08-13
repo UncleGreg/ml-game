@@ -65,6 +65,10 @@ module.exports = {
         hash:true,
         template: './src/index.html',
       }),
+    new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+      }),
     new ExtractTextPlugin({
       filename: 'index.css',
       disable: !isProduction,
