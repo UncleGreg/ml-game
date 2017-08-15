@@ -1,15 +1,18 @@
 @require "~normalize.css"
 @import 'rupture'
+@import url('https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,500,600,700')
 body
   color #fff
   font-family sans-serif
-  background #333
+  background-image: linear-gradient(-225deg, #15579e 0%, #091e33 100%);
+  min-height 100vh
   display flex
-
+  flex-direction column
+  font-family: 'Saira Semi Condensed', sans-serif
 
 .page-wrap
   width 100%
-  min-height 100vh
+  flex 1 
   display flex
   flex-direction column
   .page-table
@@ -24,6 +27,7 @@ body
     justify-content center
     padding-top 30px
     font-size 2em
+
 #buttons-wrap
   display flex
   align-items center
@@ -31,7 +35,6 @@ body
   flex-wrap wrap
   width 500px
   height 500px
-  background blue
   padding .5em
   .number
     width calc(500px / 10)
@@ -43,9 +46,33 @@ body
 
 #instructions
   text-align center
+  h3
+    font-weight 300
+    letter-spacing .03em
+  p
+    margin-bottom 50px
+  button
+    border none
+    color #fff
+    font-weight 500
+    padding 10px 50px
+    cursor pointer
+    background-image: linear-gradient(180deg, #15579e 0%, #113050 100%);
+    border-radius 50px
+    box-shadow 0 4px 5px -2px rgba(0,0,0,0.5)
+    transition .2s
+    &:hover
+      box-shadow none
+      box-shadow 0 2px 5px -2px rgba(0,0,0,0.5)
+    
 
-
+.page-footer
+  background-image: linear-gradient(90deg, #032340 0%, #06427B 48%, #032340 100%);
+  border-top 1px solid #06427b
+  padding 10px
+  text-align center
 .correct
   background-color green
   color #fff
+
 

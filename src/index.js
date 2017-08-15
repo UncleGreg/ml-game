@@ -52,7 +52,7 @@ function Stopwatch(elem){
   this.isOn = false;
   this.start = function(){
     if(!this.isOn){
-      interval = setInterval(update.bind(this), 100);
+      interval = setInterval(update.bind(this), 10);
       offset = Date.now();
       this.isOn = true;     
     }
@@ -91,7 +91,7 @@ toggleBtn.addEventListener('click',function(){
 
 const numbers = Array.from({length: 100}, (v, k) => k+1); 
 
-function shuffle(array) {
+function shuffle(array) {//{{{
   var i = 0
     , j = 0
     , temp = null
@@ -102,20 +102,25 @@ function shuffle(array) {
       array[i] = array[j]
       array[j] = temp
     }
-};
-var numberCount = 1;
+};//}}}
 
+var numberCount = 1;
 
 function generateNumbers() {
   document.getElementById('instructions').style.display ="none";
   shuffle(numbers);
   for (var i = 0; i < 100; i++){
     var x = document.createElement("button");
+    if(numbers[i] < 10){
+    var t = document.createTextNode('0' + numbers[i]);
+  }else{
     var t = document.createTextNode(numbers[i]);
+  }
     x.appendChild(t);
     x.setAttribute("class", "number");
     x.setAttribute("id", "button-" + numbers[i]);
     document.getElementById('buttons-wrap').appendChild(x);}
+
 };
 
 $(document).on('click', '.number', function ()
