@@ -108,6 +108,7 @@ var numberCount = 1;
 
 function generateNumbers() {
   document.getElementById('instructions').style.display ="none";
+  document.getElementById('page-menu').style.display ="flex";
   shuffle(numbers);
   for (var i = 0; i < 100; i++){
     var x = document.createElement("button");
