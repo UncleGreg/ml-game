@@ -25,7 +25,7 @@ function Stopwatch(elem){
     var time = new Date(timeInMilliseconds);
     var minutes = time.getMinutes().toString();
     var seconds = time.getSeconds().toString();
-    var milliseconds = time.getMilliseconds().toString();
+//    var milliseconds = time.getMilliseconds().toString();
 
     if(minutes.length < 2){
       minutes = '0' + minutes;
@@ -35,17 +35,17 @@ function Stopwatch(elem){
       seconds = '0' + seconds;
     } 
 
-    while(milliseconds.length < 3){
-      milliseconds = '0' + milliseconds;      
-    }
+    //while(milliseconds.length < 3){
+      //milliseconds = '0' + milliseconds;      
+    //}
 
-    if(time.getMinutes() == 2){
+    if(time.getSeconds() == 2){
       watch.stop()
       timer.style.display ="none"
       alert('czas sie skonczyl! Twój wynik to ' + (numberCount - 1))
     }
 
-    return minutes + ' : ' + seconds + ' . ' + milliseconds;
+    return minutes + ' : ' + seconds;
      
   }
 
@@ -108,7 +108,6 @@ var numberCount = 1;
 
 function generateNumbers() {
   document.getElementById('instructions').style.display ="none";
-  document.getElementById('page-menu').style.display ="flex";
   shuffle(numbers);
   for (var i = 0; i < 100; i++){
     var x = document.createElement("button");
@@ -122,6 +121,13 @@ function generateNumbers() {
     x.setAttribute("id", "button-" + numbers[i]);
     document.getElementById('buttons-wrap').appendChild(x);}
 
+};
+function newGame() {
+  $('.number').remove();
+  generateNumbers();
+  timer.style.display ="block"
+  watch.reset();
+  watch.start();
 };
 
 $(document).on('click', '.number', function ()
@@ -139,6 +145,7 @@ $(document).on('click', '.number', function ()
 )
 
 document.getElementById('generate-numbers').addEventListener("click", generateNumbers)
+document.getElementById('new-game').addEventListener("click", newGame)
 
 
 
