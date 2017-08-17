@@ -22,36 +22,20 @@ body
     justify-content center
   #page-menu
     font-size 1.4em
-    background-color #032340
-    border-bottom 1px solid #06427b
+    background-image url('img/timer-shape.svg')
+    background-position top center
+    background-size auto 100%
+    background-position center
+    background-repeat no-repeat
     position relative
-    height 11px
+    height 50px
     #timer
       text-align center
-      width 130px
       position absolute
       left 50%
-      top 10px
+      top 15px
       transform translateX(-50%)
       z-index 2
-      &-shape-l
-        fill #032340
-        height 50px
-        width 122px
-        transform rotate(180deg)
-        position absolute
-        top -10px
-        left calc(50% - 100px)
-        z-index 1
-      &-shape-r
-        fill #032340
-        left calc(50% - 122px/2 + 35px)
-        transform scaleX(1) scaleY(-1) 
-        position absolute
-        top 0px
-        height 40px
-        width 122px
-        z-index 1
 
     #restart
       display none

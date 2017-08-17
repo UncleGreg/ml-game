@@ -39,7 +39,7 @@ function Stopwatch(elem){
       //milliseconds = '0' + milliseconds;      
     //}
 
-    if(time.getSeconds() == 2){
+    if(time.getMinutes() == 2){
       watch.stop()
       timer.style.display ="none"
       alert('czas sie skonczyl! Twój wynik to ' + (numberCount - 1))
